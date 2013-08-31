@@ -8,6 +8,12 @@ module LinkedIn
         defaults = {:visibility => {:code => "anyone"}}
         post(path, defaults.merge(share).to_json, "Content-Type" => "application/json")
       end
+      
+      def post_to_group(group_id, post) 
+        path = "/groups/#{group_id}/posts"
+        body = post
+        post(path, body.to_json, "Content-Type" => "application/json")
+      end
 
       def join_group(group_id)
         path = "/people/~/group-memberships/#{group_id}"
